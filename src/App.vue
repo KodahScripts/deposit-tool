@@ -49,17 +49,17 @@ const NavBtnStyle = ref(`
   w-full
   p-5
   transition-colors
-  delay-150
+  delay-50
   duration-300
   ease-in-out
 `)
 
 const NavActiveBtnStyle = ref(`
-  bg-slate-300
+  bg-slate-500
   text-white
   text-shadow-2xs
   shadow-inner
-  hover:bg-slate-300
+  hover:bg-slate-500
   hover:cursor-default
 `)
 </script>
