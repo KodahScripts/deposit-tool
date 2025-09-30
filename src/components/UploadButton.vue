@@ -26,22 +26,22 @@ uppercase
 font-semibold
 cursor-pointer
 block
-p-2
+p-4
 rounded-xl
-bg-slate-100
-hover:bg-slate-50
+hover:bg-l
+border-1
 `)
 
 const MissingDataStyle = ref(`
-border-1
-border-slate-300
-bg-slate-100
+border-red-300
+bg-red-100
+text-red-500
 `)
 
 const LoadedDataStyle = ref(`
-border-1
 border-emerald-300
 bg-emerald-100
+text-emerald-500
 `)
 
 const idString = computed(() => {

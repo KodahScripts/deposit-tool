@@ -12,9 +12,24 @@ export const useCustomerDepositDataStore = defineStore('customerDepositData', ()
     return customerDepositData.value === null ? false : true
   })
 
+  const cleanRows = computed(() => {
+    const arr: Array<number|string>[] = []
+    customerDepositData.value?.forEach((row, index) => {
+      if(row[0] != undefined && row[1] != undefined && index != 0) {
+        arr.push([Number(row[0]), combineName(String(row[1]))])
+      }
+    })
+    return arr;
+  })
+
   const clearCustomerDepositData = () => {
     customerDepositData.value = null
   }
 
-  return { loadCustomerDepositData, hasCustomerDepositData, clearCustomerDepositData }
+  function combineName(name: string) {
+    const splitName = name.split(' ')
+    return [splitName[0], splitName[splitName.length - 1]].join('')
+  }
+
+  return { loadCustomerDepositData, customerDepositData, hasCustomerDepositData, cleanRows, clearCustomerDepositData }
 })

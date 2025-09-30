@@ -12,6 +12,16 @@ export const useCashSalesDataStore = defineStore('cashSalesData', () => {
     return cashSalesData.value === null ? false : true
   })
 
+  const cleanRows = computed(() => {
+    const arr: Array<number|string>[] = []
+    cashSalesData.value?.forEach((row, index) => {
+      if(row[0] != undefined && row[1] != undefined && index != 0) {
+        arr.push([Number(row[0]), Number(row[1])])
+      }
+    })
+    return arr;
+  })
+
   function getControlValue(controlNumber: number) {
     if (cashSalesData.value) {
       return cashSalesData.value.filter((row) => Number(row[0]) === controlNumber).length > 0
@@ -25,5 +35,5 @@ export const useCashSalesDataStore = defineStore('cashSalesData', () => {
     cashSalesData.value = null
   }
 
-  return { loadCashSalesData, cashSalesData, hasCashSalesData, getControlValue, clearCashSalesData }
+  return { loadCashSalesData, cashSalesData, hasCashSalesData, cleanRows, getControlValue, clearCashSalesData }
 })
