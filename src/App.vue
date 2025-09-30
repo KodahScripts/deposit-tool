@@ -41,6 +41,7 @@ const NavStyle = ref(`
   items-center
   h-16
   shadow-md
+  text-slate-500
 `)
 
 const NavBtnStyle = ref(`

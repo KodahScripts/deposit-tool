@@ -4,7 +4,9 @@
     <label :for="id" :class="[ButtonStyle, MissingDataStyle]">Upload {{ idString }}</label>
   </div>
   <div v-else>
-    <label :for="id" @click="handleClear" :class="[ButtonStyle, LoadedDataStyle]">Clear {{ idString }}</label>
+    <label :for="id" @click="handleClear" :class="[ButtonStyle, LoadedDataStyle]"
+      >Clear {{ idString }}</label
+    >
   </div>
 </template>
 <script setup lang="ts">

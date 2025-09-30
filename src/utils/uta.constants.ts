@@ -1,15 +1,15 @@
-export interface ACCOUNTS {
+interface ACCOUNTS {
   FIXED: number
-  HOLD: number,
-  VARIABLE: number,
+  HOLD: number
+  VARIABLE: number
 }
 
-export interface STORE {
+interface STORE {
   [name: string]: ACCOUNTS
 }
 
 export const STORE_ACCOUNTS: STORE = {
-  BMW: {
+  BMWT: {
     FIXED: 3225,
     VARIABLE: 3304,
     HOLD: 3304,

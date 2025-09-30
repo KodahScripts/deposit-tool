@@ -1,14 +1,14 @@
 <template>
-    <div class="flex justify-evenly m-3">
-        <UploadButton
-          v-for="key in Object.keys(uploadButtons)"
-          :key="`upload-${key}-btn`"
-          :id="key"
-          :class="{ 'hidden': uploadButtons[key].disabled }"
-          @fileData="uploadButtons[key].handler"
-          @clearData="uploadButtons[key].clearHandler"
-        />
-    </div>
+  <div class="flex justify-evenly m-3">
+    <UploadButton
+      v-for="key in Object.keys(uploadButtons)"
+      :key="`upload-${key}-btn`"
+      :id="key"
+      @fileData="uploadButtons[key].handler"
+      @clearData="uploadButtons[key].clearHandler"
+      :disabled="uploadButtons[key].disabled"
+    />
+  </div>
 </template>
 <script setup lang="ts">
 import { ref, type Ref } from 'vue'
@@ -17,10 +17,10 @@ import { useUTAStore } from '@/stores/utaData'
 import { useCashSalesDataStore } from '@/stores/cashSalesData'
 import { useCustomerDepositDataStore } from '@/stores/customerDepositData'
 
-import UploadButton from './UploadButton.vue';
+import UploadButton from './UploadButton.vue'
 
 interface UploadButton {
-    [name: string]: {
+  [name: string]: {
     handler: (data: Array<string>) => void
     clearHandler: () => void
     disabled: boolean
