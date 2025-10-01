@@ -41,6 +41,7 @@ export enum COLUMN {
   CHECK_NUMBER = 4,
   TOTAL_AMOUNT = 6,
   MERCHANT = 7,
+  NAME = 8,
   RESPONSE = 15,
   CONTROL = 21,
 }
@@ -53,6 +54,18 @@ export const UPLOADHEADER = [
   'Control #',
   'Description',
 ]
+
+export interface Upload {
+  [ref: string]: UploadRow[]
+}
+
+export interface UploadRow {
+  ref: string,
+  acct: number,
+  amt: number,
+  ctrl: string,
+  desc: string
+}
 
 export function getMerchantType(merchantNumber: string, store: string) {
   const merchantCode = merchantNumber.slice(-2)

@@ -13,27 +13,33 @@ export const useCashSalesDataStore = defineStore('cashSalesData', () => {
   })
 
   const cleanRows = computed(() => {
-    const arr: Array<number|string>[] = []
+    const arr: Array<number | string>[] = []
     cashSalesData.value?.forEach((row, index) => {
-      if(row[0] != undefined && row[1] != undefined && index != 0) {
+      if (row[0] != undefined && row[1] != undefined && index != 0) {
         arr.push([Number(row[0]), Number(row[1])])
       }
     })
-    return arr;
+    return arr
   })
 
-  function getControlValue(controlNumber: number) {
+  function getControlValue(controlNumber: string) {
     if (cashSalesData.value) {
-      return cashSalesData.value.filter((row) => Number(row[0]) === controlNumber).length > 0
-        ? cashSalesData.value.filter((row) => Number(row[0]) === controlNumber)[0][1]
-        : false
+      return cashSalesData.value.filter((row) => row[0] === controlNumber).length > 0
+        ? Number(cashSalesData.value.filter((row) => row[0] === controlNumber)[0][1])
+        : 0
     }
-    return false
   }
 
   const clearCashSalesData = () => {
     cashSalesData.value = null
   }
 
-  return { loadCashSalesData, cashSalesData, hasCashSalesData, cleanRows, getControlValue, clearCashSalesData }
+  return {
+    loadCashSalesData,
+    cashSalesData,
+    hasCashSalesData,
+    cleanRows,
+    getControlValue,
+    clearCashSalesData,
+  }
 })
